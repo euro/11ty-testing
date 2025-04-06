@@ -1,0 +1,16 @@
+{
+  "layout": "base",
+  "permalink": "/help/topics/{{ tag | slugify }}/",
+  "pagination": {
+    "data": "collections.articleTags",
+    "size": 1,
+    "alias": "tag"
+  },
+  "eleventyComputed": {
+    "title": "{{ tag }} Articles",
+    "eleventyNavigation": {
+      "parent": "help",
+      "title": "{{ title }}"
+    }
+  }
+}

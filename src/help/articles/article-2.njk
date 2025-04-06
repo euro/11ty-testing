@@ -1,0 +1,21 @@
+---
+title: Article 2 Title
+permalink: "/help/articles/article-2/"
+tags: ["Advanced", "Intermediate"]
+eleventyComputed:
+  eleventyNavigation:
+    title: "{{ title }}"
+    key: "{{ title | slugify }}"
+    parent: help
+---
+<h1>{{ title }}</h1>
+<p>Tags:
+  {% for tag in tags %}
+  <a href="/help/topics/{{ tag }}/">{{ tag }}</a>{% if not loop.last %}, {% endif %}
+  {% endfor %}
+</p>
+<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Enim adipisci quis voluptatem deleniti, nulla ratione architecto, placeat dicta deserunt facilis explicabo pariatur cum, natus earum voluptates facere quas corporis minima.</p>
+<p>Architecto fugit consectetur, labore omnis quis odit nisi non quia expedita ut, pariatur iure. Fugit, nemo temporibus accusamus delectus similique officia hic illum repellat voluptas odit provident, fuga alias! Natus.
+  Repudiandae enim dolore obcaecati similique molestiae, natus, laborum tempore quae assumenda inventore earum numquam? Ipsa veritatis molestiae corporis, iste possimus fuga labore corrupti eligendi molestias magni, soluta distinctio, modi officia.</p>
+<p>Error cupiditate consectetur fuga officiis, adipisci illo et magni eius minus alias. Nihil, nulla veritatis possimus perspiciatis nemo unde odio quasi at excepturi sit, aliquam, nostrum accusamus tempora aut illo.
+  Ex at minima delectus facere repellendus perferendis beatae recusandae! Voluptate quo aperiam fuga reiciendis minus, odit perspiciatis iure laboriosam rerum! Laudantium ratione quasi, porro mollitia reiciendis delectus fugiat dolores qui.</p>

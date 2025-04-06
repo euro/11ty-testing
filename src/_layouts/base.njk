@@ -1,0 +1,50 @@
+<html>
+<head>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
+  <style>
+    a.active {
+      font-weight: bold;
+      color: black;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="/">Home</a></li>
+      {% set crumbs = collections.all | eleventyNavigationBreadcrumb(eleventyNavigation.key, { includeSelf: true }) %}
+      {% for crumb in crumbs %}
+      {% if loop.last %}
+      <li class="breadcrumb-item active" aria-current="page">{{ crumb.title }}</li>
+      {% else%}
+      <li class="breadcrumb-item"><a href="{{ crumb.url | url }}">{{ crumb.title }}</a></li>
+      {% endif %}
+      {% endfor %}
+    </ol>
+    <hr>
+    <div class="row">
+      <div class="col-3">
+        {% set navPages = collections.all | eleventyNavigation | sort(attribute='title') %}
+        {% macro renderNavListItem(entry) %}
+        <li>
+          <a {% if entry.url == page.url %} class="active" aria-current="page" {% endif %} href="{{ entry.url }}">{{ entry.title }}</a>
+          <ul>
+            {% for child in entry.children | sort(attribute='title') %}{{ renderNavListItem(child) }}{% endfor %}
+          </ul>
+        </li>
+        {% endmacro %}
+        <ul class="list-unstyled">
+          {% for entry in navPages %}{{ renderNavListItem(entry) }}{% endfor %}
+        </ul>
+      </div>
+      <div class="col-9">
+        {{ content | safe }}
+      </div>
+    </div>
+    <hr>
+    <p>eleventyNavigation data:</p>
+    <p><code>{{ eleventyNavigation | dump }}</code></p>
+  </div>
+</body>
+</html>

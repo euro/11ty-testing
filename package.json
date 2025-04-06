@@ -1,0 +1,15 @@
+{
+  "name": "11ty-testing",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "npx @11ty/eleventy --serve"
+  },
+  "dependencies": {
+    "@11ty/eleventy": "^3.0.0",
+    "@11ty/eleventy-navigation": "^1.0.4"
+  },
+  "type": "module",
+  "devDependencies": {
+    "lodash": "^4.17.21"
+  }
+}
