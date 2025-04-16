@@ -9,6 +9,7 @@
   "eleventyComputed": {
     "title": "{{ tag }} Articles",
     "eleventyNavigation": {
+      "key": "article-{{ tag | slugify }}",
       "parent": "help",
       "title": "{{ title }}"
     }
